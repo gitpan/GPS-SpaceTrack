@@ -8,7 +8,7 @@ example-getsatellitelist - GPS::SpaceTrack getsatellitelist method example
 
 
 use strict;
-use blib;
+use lib qw{./lib ../lib};
 use GPS::SpaceTrack;
 my $lat=shift()||38.870997;    #degrees
 my $lon=shift()||-77.05596;    #degrees

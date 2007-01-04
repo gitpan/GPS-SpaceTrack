@@ -1,6 +1,7 @@
-bin/example-getsatellitelist
-bin/example-plot
+bin/example-getsatellitelist.pl
+bin/example-plot.pl
 bin/example-plot.png
+bin/satellite-get-tle.pl
 CHANGES
 doc/gps.tle
 lib/GPS/SpaceTrack.pm

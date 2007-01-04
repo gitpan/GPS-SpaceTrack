@@ -7,7 +7,7 @@ example-plot - Plot GPS::SpaceTrack data with GD::Graph::Polar
 =cut
 
 use strict;
-use blib;
+use lib qw{./lib ../lib};
 use GPS::SpaceTrack;
 use GD::Graph::Polar;
 use Time::HiRes qw{time};
