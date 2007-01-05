@@ -21,16 +21,30 @@ use Astro::SpaceTrack;
 
   ./satellite-get-tle.pl login password inmarsat
 
+  ./satellite-get-tle.pl login password artemis
+
+  ./satellite-get-tle.pl login password galaxy
+
+  ./satellite-get-tle.pl login password mtsat
+
+=head2 ACCOUNT
+
+Obtain and account at http://www.space-track.org/
+
+=head2 ALTERNATIVE
+
+http://celestrak.com/NORAD/elements/gps-ops.txt
+
 =cut
 
 sub usage {
-  die("Syntax: navstar-get.pl login password [data_set_name]\n");
+  die("Syntax: $0 login password [data_set_name]\n");
 }
 
 
 my $account=shift() || usage();
 my $passwd=shift() || usage();
-my $name=shift()||'navstar'; #or inmarsat
+my $name=shift()||'navstar';
 
 my $st = Astro::SpaceTrack->new(username=>$account,
                                 password=>$passwd,

@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-example-plot - Plot GPS::SpaceTrack data with GD::Graph::Polar
+example-plot.pl - Plot GPS::SpaceTrack data with GD::Graph::Polar
 
 =cut
 
@@ -40,5 +40,5 @@ foreach my $sec (0..80) {
 } 
 print "\nTime: ", time()-$time, " seconds\n";
 open(IMG, ">example-plot.png");
-print IMG $plot->image;
+print IMG $plot->draw;
 close(IMG);

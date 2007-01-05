@@ -2,14 +2,14 @@
 
 =head1 NAME
 
-example-getsatellitelist - GPS::SpaceTrack getsatellitelist method example
+example-getsatellitelist.pl - GPS::SpaceTrack getsatellitelist method example
 
 =cut
-
 
 use strict;
 use lib qw{./lib ../lib};
 use GPS::SpaceTrack;
+
 my $lat=shift()||38.870997;    #degrees
 my $lon=shift()||-77.05596;    #degrees
 my $hae=shift()||13;           #meters

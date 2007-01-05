@@ -39,7 +39,7 @@ BEGIN {
     }
 }
 
-BEGIN { plan tests => 34 }
+BEGIN { plan tests => 3 }
 
 # just check that all modules can be compiled
 ok(eval {require GPS::SpaceTrack; 1}, 1, $@);
@@ -54,6 +54,6 @@ ok(ref $obj, "GPS::SpaceTrack");
 my $p1={lat=>38.870997, lon=>-77.05596, alt=>13};
 my $list=$obj->getsatellitelist($p1);
 ok(ref($list), "ARRAY");
-foreach(@$list) {
-  ok(1,1);
-}
+#foreach(@$list) { 
+#  ok(1,1); #this test depends on GPS::PRN and the gps.tle file
+#}
