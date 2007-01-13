@@ -6,14 +6,16 @@ GPS::SpaceTrack - Package for calculating the position of GPS satellites
 
 =head1 SYNOPSIS
 
-use GPS::SpaceTrack;
-my $obj=GPS::SpaceTrack->new(filename=>"gps.tle");
-print join("\t", qw{Count PRN ELEV Azim SNR USED}), "\n";
-foreach ($obj->getsatellitelist({lat=>38.870997, lon=>-77.05596})) {
-  print join("\t", $_->prn, $_->elev, $_->azim, $_->snr, $_->used), "\n";
-}
+  use GPS::SpaceTrack;
+  my $obj=GPS::SpaceTrack->new(filename=>"gps.tle");
+  print join("\t", qw{Count PRN ELEV Azim SNR USED}), "\n";
+  foreach ($obj->getsatellitelist({lat=>38.870997, lon=>-77.05596})) {
+    print join("\t", $_->prn, $_->elev, $_->azim, $_->snr, $_->used), "\n";
+  }
 
 =head1 DESCRIPTION
+
+This package can calculates the location of the GPS satellite constellation given the position of the receiver and a time which can be in the future. 
 
 =head1 CONVENTIONS
 
@@ -23,7 +25,7 @@ Function naming convention is "format of the return" underscore "format of the p
 
 use strict;
 use vars qw($VERSION);
-$VERSION = sprintf("%d.%02d", q{Revision: 0.04} =~ /(\d+)\.(\d+)/);
+$VERSION = sprintf("%d.%02d", q{Revision: 0.05} =~ /(\d+)\.(\d+)/);
 use Astro::Coord::ECI;
 use Astro::Coord::ECI::TLE;
 use Net::GPSD::Satellite;
