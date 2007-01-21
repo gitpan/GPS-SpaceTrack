@@ -6,11 +6,7 @@ example-plot.pl - Plot GPS::SpaceTrack data with GD::Graph::Polar
 
 =head1 SAMPLE OUTPUT
 
-=begin html
-
-<img src="http://search.cpan.org/src/MRDVT/GPS-SpaceTrack-0.06/bin/example-plot.png" />
-
-=end html 
+L<http://search.cpan.org/src/MRDVT/GPS-SpaceTrack-0.06/bin/example-plot.png>
 
 =cut
 
