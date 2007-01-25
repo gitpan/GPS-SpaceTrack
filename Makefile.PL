@@ -11,7 +11,7 @@ WriteMakefile(
                  Geo::Functions       => 0.05,
                  Time::HiRes          => 0,
                  GPS::PRN             => 0.04,
-                 GD::Graph::Polar     => 0.05,
+                 GD::Graph::Polar     => 0.07,
                },
                ($] >= 5.005 ? 
                  (

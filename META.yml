@@ -1,13 +1,13 @@
 # http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         GPS-SpaceTrack
-version:      0.07
+version:      0.08
 version_from: lib/GPS/SpaceTrack.pm
 installdirs:  site
 requires:
     Astro::Coord::ECI:             0
     Astro::Coord::ECI::TLE:        0
-    GD::Graph::Polar:              0.05
+    GD::Graph::Polar:              0.07
     Geo::Functions:                0.05
     GPS::PRN:                      0.04
     Net::GPSD::Satellite:          0.3

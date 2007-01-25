@@ -28,7 +28,7 @@ $filename="./gps.tle" if -r "./gps.tle";
 $filename="../gps.tle" if -r "../gps.tle";
 $filename="../../gps.tle" if -r "../../gps.tle";
 
-my $plot=GD::Graph::Polar->new(size=>480, radius=>90, ticks=>9);
+my $plot=GD::Graph::Polar->new(size=>800, radius=>90, ticks=>9);
 my $obj=GPS::SpaceTrack->new(filename=>$filename) || die();
 
 my $count=0;
@@ -59,7 +59,9 @@ foreach my $prn (keys %prn) {
     my $r1=$list[$_]->[2];
     my $t1=$list[$_]->[3];
     $plot->addGeoPoint($r0=>$t0) if 1==$_;
+    $plot->addString($r0=>90-$t0,$prn) if 1==$_;
     $plot->addGeoPoint($r1=>$t1) if $#list==$_;
+    $plot->addString($r1=>90-$t1, $prn) if $#list==$_;
     $plot->addGeoLine($r0=>$t0, $r1=>$t1);
   }
 }

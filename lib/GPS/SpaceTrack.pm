@@ -25,7 +25,7 @@ Function naming convention is "format of the return" underscore "format of the p
 
 use strict;
 use vars qw($VERSION);
-$VERSION = sprintf("%d.%02d", q{Revision: 0.07} =~ /(\d+)\.(\d+)/);
+$VERSION = sprintf("%d.%02d", q{Revision: 0.08} =~ /(\d+)\.(\d+)/);
 use Astro::Coord::ECI;
 use Astro::Coord::ECI::TLE;
 use Net::GPSD::Satellite;
