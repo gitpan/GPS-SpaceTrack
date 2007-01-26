@@ -4,10 +4,6 @@
 
 example-plot.pl - Plot GPS::SpaceTrack data with GD::Graph::Polar
 
-=head1 SAMPLE OUTPUT
-
-L<http://search.cpan.org/src/MRDVT/GPS-SpaceTrack-0.06/bin/example-plot.png>
-
 =cut
 
 use strict;
@@ -69,3 +65,11 @@ print "\nTime: ", time()-$time, " seconds\n";
 open(IMG, ">example-plot.png");
 print IMG $plot->draw;
 close(IMG);
+
+__END__
+
+=head1 SAMPLE OUTPUT
+
+L<http://search.cpan.org/src/MRDVT/GPS-SpaceTrack-0.09/bin/example-plot.png>
+
+=cut
