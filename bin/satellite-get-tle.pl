@@ -2,7 +2,47 @@
 
 =head1 NAME
 
-satellite-get-tle.pl - Application to retrive TLE data with Astro::SpaceTrack package
+satellite-get-tle-gps-oid.pl - Application to retrive GPS TLE data with Astro::SpaceTrack and GPS::PRN packages
+
+=cut
+
+use strict;
+use Astro::SpaceTrack;
+use GPS::PRN;
+
+my $account=shift()
+          || die("Error: account required.\n  Syntax: $0 account password\n");
+
+my $passwd=shift()
+          || die("Error: password required.\n  Syntax: $0 account password\n");
+
+my $gpsprn=GPS::PRN->new()
+          || die("Error: Cannot create GPS::PRN object.\n");
+
+my $st=Astro::SpaceTrack->new(username=>$account,
+                              password=>$passwd,
+                              with_name=>1)
+          || die("Error: Cannot create Astro::SpaceTrack object.\n");
+
+my $rslt=$st->retrieve($gpsprn->listoid) 
+          || die("Error: retrieve method faild.\n");
+
+print $rslt->content if $rslt->is_success
+          || die("Error: ". $rslt->status_line."\n");
+
+__END__
+
+=head2 SYNTAX
+
+satellite-get-tle-gps-oid.pl account password
+
+=head2 ACCOUNT
+
+Obtain and account at http://www.space-track.org/
+
+=head2 ALTERNATIVE
+
+http://celestrak.com/NORAD/elements/gps-ops.txt
 
 =head1 SAMPLE OUTPUT
 
@@ -17,45 +57,3 @@ satellite-get-tle.pl - Application to retrive TLE data with Astro::SpaceTrack pa
   2 22014  56.8303  15.0910 0175314  46.9379 314.5258  2.00571394100102
 
 =cut
-
-use strict;
-use Astro::SpaceTrack;
-
-=head1 SYNOPSIS
-
-=head2 SYNTAX
-
-./satellite-get-tle.pl login password [data_set_name]
-
-=head2 EXAMPLES
-
-  ./satellite-get-tle.pl login password navstar
-  ./satellite-get-tle.pl login password inmarsat
-  ./satellite-get-tle.pl login password artemis
-  ./satellite-get-tle.pl login password galaxy
-  ./satellite-get-tle.pl login password mtsat
-
-=head2 ACCOUNT
-
-Obtain and account at http://www.space-track.org/
-
-=head2 ALTERNATIVE
-
-http://celestrak.com/NORAD/elements/gps-ops.txt
-
-=cut
-
-sub usage {
-  die("Syntax: $0 login password [data_set_name]\n");
-}
-
-
-my $account=shift() || usage();
-my $passwd=shift() || usage();
-my $name=shift()||'navstar';
-
-my $st = Astro::SpaceTrack->new(username=>$account,
-                                password=>$passwd,
-                                with_name=>1) or die();
-my $rslt = $st->search_name($name);
-print $rslt->is_success ? $rslt->content : $rslt->status_line;
