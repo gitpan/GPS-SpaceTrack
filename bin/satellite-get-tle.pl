@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-satellite-get-tle-gps-oid.pl - Application to retrive GPS TLE data with Astro::SpaceTrack and GPS::PRN packages
+satellite-get-tle.pl - Application to retrive GPS TLE data with Astro::SpaceTrack and GPS::PRN packages
 
 =cut
 
@@ -34,7 +34,7 @@ __END__
 
 =head2 SYNTAX
 
-satellite-get-tle-gps-oid.pl account password
+satellite-get-tle.pl account password
 
 =head2 ACCOUNT
 

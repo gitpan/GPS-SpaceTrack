@@ -7,6 +7,7 @@ WriteMakefile(
                  vars                 => 0,
                  Astro::Coord::ECI    => 0,
                  Astro::Coord::ECI::TLE => 0,
+                 Astro::SpaceTrack    => 0,
                  Net::GPSD::Satellite => 0.30,
                  Geo::Functions       => 0.05,
                  Time::HiRes          => 0,

@@ -1,8 +1,27 @@
 #!/usr/bin/perl -w
 
+use strict;
+use Astro::SpaceTrack;
+
+sub usage {
+  die("Syntax: $0 login password [data_set_name]\n");
+}
+
+my $account=shift() || usage();
+my $passwd=shift() || usage();
+my $name=shift()||'navstar';
+
+my $st = Astro::SpaceTrack->new(username=>$account,
+                                password=>$passwd,
+                                with_name=>1) or die();
+my $rslt = $st->search_name($name);
+print $rslt->is_success ? $rslt->content : $rslt->status_line;
+
+__END__
+
 =head1 NAME
 
-satellite-get-tle.pl - Application to retrive TLE data with Astro::SpaceTrack package
+satellite-get-tle-by-name.pl - Application to retrive TLE data with Astro::SpaceTrack package
 
 =head1 SAMPLE OUTPUT
 
@@ -16,16 +35,9 @@ satellite-get-tle.pl - Application to retrive TLE data with Astro::SpaceTrack pa
   1 22014U 92039A   07024.89979786 -.00000066  00000-0  10000-3 0  3113
   2 22014  56.8303  15.0910 0175314  46.9379 314.5258  2.00571394100102
 
-=cut
-
-use strict;
-use Astro::SpaceTrack;
-
-=head1 SYNOPSIS
-
 =head2 SYNTAX
 
-./satellite-get-tle.pl login password [data_set_name]
+./satellite-get-tle-by-name.pl login password [data_set_name]
 
 =head2 EXAMPLES
 
@@ -44,18 +56,3 @@ Obtain and account at http://www.space-track.org/
 http://celestrak.com/NORAD/elements/gps-ops.txt
 
 =cut
-
-sub usage {
-  die("Syntax: $0 login password [data_set_name]\n");
-}
-
-
-my $account=shift() || usage();
-my $passwd=shift() || usage();
-my $name=shift()||'navstar';
-
-my $st = Astro::SpaceTrack->new(username=>$account,
-                                password=>$passwd,
-                                with_name=>1) or die();
-my $rslt = $st->search_name($name);
-print $rslt->is_success ? $rslt->content : $rslt->status_line;
